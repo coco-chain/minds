@@ -42,22 +42,6 @@ services:
       - ./engine/:/var/www/Minds/engine:cached
       - keys:/.dev
 
-  runners:
-    build:
-      context: ./engine
-      dockerfile: ../containers/php-runners/Dockerfile
-    depends_on:
-      - cassandra
-      - elasticsearch
-      - rabbitmq
-      - redis
-    networks:
-      - app
-    volumes:
-      - ./front/:/var/www/Minds/front:cached
-      - ./engine/:/var/www/Minds/engine:cached
-      - keys:/.dev
-
   sockets:
     image: minds/sockets
     environment:
