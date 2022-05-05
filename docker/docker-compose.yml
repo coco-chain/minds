@@ -9,7 +9,7 @@ services:
   nginx:
     build:
       context: ../containers/nginx
-      dockerfile: ./Dockerfile.dev-ssr
+      dockerfile: ../containers/nginx/Dockerfile.dev-ssr
     mem_limit: 512MB
     depends_on:
       - php-fpm
@@ -27,7 +27,7 @@ services:
   php-fpm:
     build:
       context: ./engine
-      dockerfile: ./containers/php-fpm/Dockerfile.dev
+      dockerfile: ../containers/php-fpm/Dockerfile.dev
     mem_limit: 512MB
     depends_on:
       - cassandra
@@ -45,7 +45,7 @@ services:
   runners:
     build:
       context: ./engine
-      dockerfile: ./containers/php-runners/Dockerfile
+      dockerfile: ../containers/php-runners/Dockerfile
     depends_on:
       - cassandra
       - elasticsearch
@@ -140,7 +140,7 @@ services:
   installer:
     build:
       context: ./engine
-      dockerfile: ./containers/installer/Dockerfile
+      dockerfile: ../containers/installer/Dockerfile
     networks:
       - app
     volumes:
@@ -153,7 +153,7 @@ services:
 
   elasticsearch-provisioner:
     build:
-      context: ./containers/elasticsearch-provisioner
+      context: ../containers/elasticsearch-provisioner
     networks:
       - app
     depends_on:
