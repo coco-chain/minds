@@ -119,22 +119,6 @@ services:
     networks:
       - app
 
-  ## INSTALLATION ARTIFACTS
-
-  installer:
-    build:
-      context: ./engine
-      dockerfile: ../containers/installer/Dockerfile
-    networks:
-      - app
-    volumes:
-      - ./front/:/var/www/Minds/front:delegated
-      - ./engine/:/var/www/Minds/engine:delegated
-      - keys:/.dev
-    depends_on:
-      cassandra:
-        condition: service_healthy
-
   elasticsearch-provisioner:
     build:
       context: ../containers/elasticsearch-provisioner
