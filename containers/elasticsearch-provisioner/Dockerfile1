@@ -1,0 +1,6 @@
+FROM alpine:latest
+
+WORKDIR /provisioner
+COPY wait-for.sh provision-elasticsearch.sh /provisioner/
+COPY schema/ /provisioner/schema/
+ENTRYPOINT ["sh", "./provision-elasticsearch.sh", "elasticsearch"]

@@ -122,6 +122,7 @@ services:
   elasticsearch-provisioner:
     build:
       context: ../containers/elasticsearch-provisioner
+      dockerfile: ../containers/elasticsearch-provisioner/Dockerfile1
     networks:
       - app
     depends_on:
